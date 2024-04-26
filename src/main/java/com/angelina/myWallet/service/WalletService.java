@@ -11,7 +11,7 @@ import java.util.List;
 public class WalletService {
     @Autowired
     public WalletRepository walletRepository;
-    public Wallet createOrUpdate(Wallet wallet){
+    public static Wallet createOrUpdate(Wallet wallet){
         if (wallet.getId() == null){
             walletRepository.save(wallet);
         }else{
