@@ -37,11 +37,11 @@ public class WalletService {
         }
         return wallet;
     }
-    public boolean delete(Long id){
+    public void delete(Long id){
         Optional<Wallet> wallet = walletRepository.findById(id);
         if(wallet.isPresent()){
             walletRepository.delete(wallet.get());
-            return true;
+            return;
         }
         throw new WalletException("Wallet with "+id+" does not exists!");
     }

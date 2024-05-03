@@ -24,7 +24,7 @@ public class Wallet {
     private String accountNumber;
     @Size(max = 100)
     private String description;
-    private Integer priority; //1=High; 2=Medium; 3=Low
+    private Integer priority;
     private Double currentBalance;
 
     @PrePersist
