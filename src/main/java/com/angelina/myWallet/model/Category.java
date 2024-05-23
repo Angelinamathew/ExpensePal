@@ -1,8 +1,6 @@
 package com.angelina.myWallet.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,4 +16,7 @@ public class Category {
 
     private String name;
 
+    //many categories can assign to one user
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private User user;@
 }
