@@ -22,16 +22,19 @@ public class CategoryController {
         this.categoryRepository = categoryRepository;
     }
     @GetMapping("/categories")
+    //The method returns a collection of Category objects.
     Collection<Category> categories(){
         return categoryRepository.findAll();
-        //Select * from categories
+        //This line fetches all categories from the database. It's equivalent to the SQL query SELECT * FROM categories
     }
     //category/1
     @GetMapping("/categories/{id}")
     ResponseEntity<?> getCategory(@PathVariable Long id){
-        //it returns category
-        //using optional because it might not return anything
+       // fetch a Category by its ID and returns an Optional<Category> which can either contain the category or be empty.
         Optional<Category> category = categoryRepository.findAllById(id);
+        // ResponseEntity represent an HTTP response, including the status code, headers, and body
+        // If the category is found, it is wrapped in a ResponseEntity with a 200 OK status.
+        // If the category is not found, a ResponseEntity with a 404 Not Found status is returned.
         return category.map(response -> ResponseEntity.ok().body(response)).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 
     }
