@@ -12,11 +12,12 @@ import lombok.NoArgsConstructor;
 @Table(name="category")
 public class Category {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    //many categories can assign to one user
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    private User user;@
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }
