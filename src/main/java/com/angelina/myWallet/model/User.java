@@ -9,7 +9,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Data
-@Table(name="user")
+@Table(name="app_user")
 public class User {
     @Id
     private Long id;
@@ -18,11 +18,6 @@ public class User {
 
     private  String email;
 
-
-    //one user can have many categories
-    //using set because it doesn't contain duplicates
-    @OneToMany
-    private Set<Category> categories;
 
 
 

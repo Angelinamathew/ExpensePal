@@ -16,7 +16,4 @@ public class Category {
 
     private String name;
 
-    //many categories can assign to one user
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    private User user;@
 }
