@@ -48,8 +48,17 @@ public class CategoryController {
         //This creates a ResponseEntity with a status of 201 Created. The created method also sets the Location header of the response to the URI of the newly created resource.
         // The URI is constructed using the base URL /api/category and appending the ID of the created category (result.getId()).
         //This sets the body of the response to the Category object that was saved and returned by categoryRepository.save
-        return ResponseEntity.created(new URI("/api/category" + result.getId())).body(result);
+        return ResponseEntity.created(new URI("/api/category/" + result.getId())).
+                body(result);
     }
-
-
+    @PutMapping("/category/{id}")
+    ResponseEntity<Category> update(@Valid @RequestBody Category category){
+        Category result = categoryRepository.save(category);
+        return ResponseEntity.ok().body(result);
+    }
+    @DeleteMapping("/category/{id}")
+    ResponseEntity<?> delete(@PathVariable Long id){
+        categoryRepository.delete(id);
+        return ResponseEntity.ok().build();
+    }
 }

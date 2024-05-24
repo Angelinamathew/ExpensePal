@@ -3,6 +3,8 @@ package com.angelina.myWallet.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity

@@ -13,12 +13,8 @@ import lombok.NonNull;
 @Table(name="category")
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NonNull
+
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 }

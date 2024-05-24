@@ -1,5 +1,6 @@
 package com.angelina.myWallet.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,10 +24,8 @@ public class Expense {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
     private Category category;
-
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "user_id")
     private User user;
 }
