@@ -4,11 +4,11 @@ import com.angelina.myWallet.model.Category;
 import com.angelina.myWallet.repository.CategoryRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -28,14 +28,28 @@ public class CategoryController {
         //This line fetches all categories from the database. It's equivalent to the SQL query SELECT * FROM categories
     }
     //category/1
-    @GetMapping("/categories/{id}")
-    ResponseEntity<?> getCategory(@PathVariable Long id){
+    @GetMapping("/category/{id}")
+    ResponseEntity<?> get(@PathVariable Long id){
        // fetch a Category by its ID and returns an Optional<Category> which can either contain the category or be empty.
         Optional<Category> category = categoryRepository.findAllById(id);
         // ResponseEntity represent an HTTP response, including the status code, headers, and body
         // If the category is found, it is wrapped in a ResponseEntity with a 200 OK status.
         // If the category is not found, a ResponseEntity with a 404 Not Found status is returned.
         return category.map(response -> ResponseEntity.ok().body(response)).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-
     }
+    /*
+
+     */
+    @PostMapping("/category")
+    ResponseEntity<Category> create(@Valid @RequestBody Category category) throws URISyntaxException{
+        //This line saves the Category object to the database using the CategoryRepository and returns the saved entity
+        System.out.println(category.toString());
+        Category result = categoryRepository.save(category);
+        //This creates a ResponseEntity with a status of 201 Created. The created method also sets the Location header of the response to the URI of the newly created resource.
+        // The URI is constructed using the base URL /api/category and appending the ID of the created category (result.getId()).
+        //This sets the body of the response to the Category object that was saved and returned by categoryRepository.save
+        return ResponseEntity.created(new URI("/api/category" + result.getId())).body(result);
+    }
+
+
 }
