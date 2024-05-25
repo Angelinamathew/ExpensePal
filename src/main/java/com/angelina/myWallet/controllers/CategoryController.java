@@ -30,6 +30,7 @@ public class CategoryController {
     //category/1
     @GetMapping("/category/{id}")
     ResponseEntity<?> get(@PathVariable Long id){
+        //@PathVariable Long id: Extracts the id from the URL path.
        // fetch a Category by its ID and returns an Optional<Category> which can either contain the category or be empty.
         Optional<Category> category = categoryRepository.findAllById(id);
         // ResponseEntity represent an HTTP response, including the status code, headers, and body
@@ -53,14 +54,21 @@ public class CategoryController {
     }
     @PutMapping("/category/{id}")
     ResponseEntity<Category> update(@Valid @RequestBody Category category){
+       // @PathVariable Long id: Extracts the id from the URL path.
+        //Checks if the Category with the given ID exists.
+        //Updates the existing Category fields (name and userId) with values from the request body.
+        //Saves the updated Category back to the database.
         Category result = categoryRepository.save(category);
         return ResponseEntity.ok().body(result);
     }
-
-//TODO
-//    @DeleteMapping("/category/{id}")
-//    ResponseEntity<?> delete(@PathVariable Long id){
-//        categoryRepository.delete(id);
-//        return ResponseEntity.ok().build();
-//    }
+    //If the Category exists, it is deleted using categoryRepository.delete(category).
+    //The method returns a ResponseEntity with HTTP status 204 No Content to indicate successful deletion.
+    //If the Category does not exist, the method returns a ResponseEntity with HTTP status 404 Not Found.
+    @DeleteMapping("/category/{id}")
+    ResponseEntity<?> delete(@PathVariable Long id) {
+        return categoryRepository.findById(id).map(category -> {
+                categoryRepository.delete(category);
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        }
 }
