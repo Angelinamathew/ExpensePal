@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import AppNav from './AppNav';
 
+
+
+
 class Home extends Component {
     state = {}
 
@@ -15,4 +18,5 @@ class Home extends Component {
             );
     }
 }
+ 
 export default Home;

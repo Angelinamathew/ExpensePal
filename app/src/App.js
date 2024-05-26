@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
-import { Route, BrowserRouter as Router,Switch} from 'react-router-dom'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Category from './Category';
 import Home from './Home';
-
+import Expsenses from './Expenses'; // Corrected import
 
 class App extends Component {
-    state = {  }
     render() { 
         return ( 
             <Router>
-                <Switch>
-                     <Route path='/' exact={true} component={Home}/>
-                     <Route path='/categories' exact={true} component={Category}/>
-                </Switch>
-             </Router>
+                <Routes>
+                     <Route path='/' element={<Home />} />
+                     <Route path='/categories' element={<Category />} />
+                     <Route path='/expenses' element={<Expsenses />} />
+                </Routes>
+            </Router>
         );
     }
 }
