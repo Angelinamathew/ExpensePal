@@ -1,2 +1,3 @@
-package com.angelina.myWallet.repository;public class ExpenseRepository {
+package com.angelina.myWallet.repository;
+public class ExpenseRepository {
 }
