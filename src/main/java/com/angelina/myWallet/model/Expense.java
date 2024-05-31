@@ -9,23 +9,35 @@ import lombok.NoArgsConstructor;
 import java.time.Instant;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
+@NoArgsConstructor
 @Data
-@Table(name = "expense")
+@Table(name="expense")
 public class Expense {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Instant expenseDate;
 
     private String description;
 
+    private String location;
+
     @ManyToOne
     private Category category;
+
     @JsonIgnore
     @ManyToOne
     private User user;
+
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
