@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.Instant;
 
 @AllArgsConstructor
@@ -16,22 +18,25 @@ import java.time.Instant;
 public class Expense {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     private Instant expenseDate;
 
+    @NotBlank
     private String description;
 
     private String location;
 
     @ManyToOne
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @JsonIgnore
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
-
-
 
     public Long getId() {
         return id;
