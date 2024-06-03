@@ -21,12 +21,16 @@ public class ExpenseController {
     private ExpenseRepository expenseRepository;
 
     @GetMapping("/expenses")
+    //Calls expenseRepository.findAll() to retrieve all expenses from the database and returns them as a list.
     public List<Expense> getExpenses() {
         return expenseRepository.findAll();
     }
 
     @DeleteMapping("/expenses/{id}")
     public ResponseEntity<?> deleteExpense(@PathVariable Long id) {
+        //Tries to find an expense by its ID using expenseRepository.findById(id).
+        //If the expense is present, it deletes it using expenseRepository.deleteById(id) and returns a 200 OK response.
+        //If the expense is not found, it returns a 404 Not Found response.
         Optional<Expense> expense = expenseRepository.findById(id);
         if (expense.isPresent()) {
             expenseRepository.deleteById(id);
@@ -38,6 +42,8 @@ public class ExpenseController {
 
     @PostMapping("/expenses")
     public ResponseEntity<Expense> createExpense(@Valid @RequestBody Expense expense) throws URISyntaxException {
+        //Saves the new expense to the database using expenseRepository.save(expense).
+        //Returns a 201 Created response with the location of the new expense and the expense object itself.
         Expense result = expenseRepository.save(expense);
         return ResponseEntity.created(new URI("/api/expenses/" + result.getId())).body(result);
     }
