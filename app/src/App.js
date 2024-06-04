@@ -4,15 +4,18 @@ import Category from './Category';
 import Home from './Home';
 import Expsenses from './Expenses'; // Corrected import
 
+
 class App extends Component {
     render() { 
         return ( 
             <Router>
+                <div>
                 <Routes>
                      <Route path='/' element={<Home />} />
                      <Route path='/categories' element={<Category />} />
                      <Route path='/expenses' element={<Expsenses />} />
                 </Routes>
+                </div>
             </Router>
         );
     }
