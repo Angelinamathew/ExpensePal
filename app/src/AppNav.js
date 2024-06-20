@@ -22,9 +22,7 @@ class AppNav extends Component {
                   <NavItem>
                     <NavLink href="/Account">Account</NavLink>
                   </NavItem>
-                
                 </Nav>
-          
             </Navbar>
           </div>
         );
