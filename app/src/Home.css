@@ -1,0 +1,21 @@
+.home-container {
+    background-color: white;
+    height: 100vh; /* Full page height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container {
+    display: flex;
+    justify-content: flex-end; /* Adjust if needed */
+    align-items: right;
+    margin-top: 20px; /* Adjust as per your layout */
+}
+
+.app-logo {
+    max-width: 100%; /* Ensures image doesn't overflow */
+    height: auto; /* Maintains aspect ratio */
+    width: 800px; /* Initial width */
+}

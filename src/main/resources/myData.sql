@@ -1,10 +1,14 @@
-INSERT INTO app_user (id, name, email) VALUES (1, 'Alice', 'alice@example.com');
-INSERT INTO app_user (id, name, email) VALUES (2, 'Bob', 'bob@example.com');
 
-INSERT INTO category (id, name, user_id) VALUES (1, 'Food', 1);
-INSERT INTO category (id, name, user_id) VALUES (2, 'Transportation', 1);
-INSERT INTO category (id, name, user_id) VALUES (3, 'Entertainment', 2);
+insert into user values (1,'Siamak', 'Codeengine11@gmail.com')
+insert into user values (2,'John', 'John@john.com')
+insert into user values (3,'Adam', 'adam@adam.com')
 
-INSERT INTO expense (id, expense_date, description, category_id, user_id) VALUES (1, '2024-05-23 12:00:00', 'Lunch at restaurant', 1, 1);
-INSERT INTO expense (id, expense_date, description, category_id, user_id) VALUES (2, '2024-05-22 08:30:00', 'Bus ticket', 2, 1);
-INSERT INTO expense (id, expense_date, description, category_id, user_id) VALUES (3, '2024-05-21 20:00:00', 'Movie ticket', 3, 2);
+
+insert into category values (1,'Travel')
+insert into category values (2,'Auto Loan')
+insert into category  values (3,'Travel')
+
+
+insert into expense values (100,'New York Business Trip','2019-06-16T17:00:00.000Z','New York',1,1)
+insert into expense values (101,'Ford Mustang Payment','2019-06-15T15:00:00.000Z','Los Angeles',2,2)
+insert into expense values(102,'Grand Canyon Trip With Family','2019-06-15T15:00:00.000Z','Arizona',3,1)
