@@ -1,21 +1,35 @@
+/* Home.css */
+
 .home-container {
-    background-color: white;
-    height: 100vh; /* Full page height */
-    display: flex;
+    background-color: #f8f9fa; /* Light background for contrast */
+    /* height: 100vh; /* Full page height */
+    /* display: flex; */
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* padding: 20px; Padding for better spacing */
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.title {
+    color: #0b38bd; /* Dark grey text for better readability */
+    font-family: "Times New Roman", Times, serif;
+    font-size: 4em; /* Larger font size for emphasis */
+    margin-bottom: 20px; /* Space between title and image */
 }
 
 .image-container {
     display: flex;
-    justify-content: flex-end; /* Adjust if needed */
-    align-items: right;
-    margin-top: 20px; /* Adjust as per your layout */
+    justify-content: right; /* Center the image horizontally */
+    align-items: right; /* Center the image vertically */
 }
 
 .app-logo {
     max-width: 100%; /* Ensures image doesn't overflow */
     height: auto; /* Maintains aspect ratio */
-    width: 800px; /* Initial width */
+    width: 80%; /* Make the image responsive */
+    max-width: 800px; /* Maximum width of the image */
+    border-radius: 10px; /* Rounded corners for the image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for better presentation */
 }
