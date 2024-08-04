@@ -42,8 +42,6 @@ public class ExpenseController {
 
     @PostMapping("/expenses")
     public ResponseEntity<Expense> createExpense(@Valid @RequestBody Expense expense) throws URISyntaxException {
-        //Saves the new expense to the database using expenseRepository.save(expense).
-        //Returns a 201 Created response with the location of the new expense and the expense object itself.
         Expense result = expenseRepository.save(expense);
         return ResponseEntity.created(new URI("/api/expenses/" + result.getId())).body(result);
     }

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.time.Instant;
 
 @AllArgsConstructor
@@ -37,6 +38,9 @@ public class Expense {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Column(name = "expense_in_dollar", precision = 10, scale = 2)
+    private BigDecimal expenseInDollar;
 
     public Long getId() {
         return id;
