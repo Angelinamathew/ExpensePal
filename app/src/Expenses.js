@@ -32,13 +32,14 @@ class Expenses extends Component {
         // Binding event handlers to the component instance
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.handleDateChange = this.handleDateChange.bind(this);
+        this.handleDateChange = this.handleDateChange.bind(this) ;
     }
 
     async handleSubmit(event) {
         event.preventDefault();
         const { item } = this.state;
-    
+        
+        //Exceptional Handling
         // Making a POST request to save the new expense item
         await fetch(`/api/expenses`, {
             method: 'POST',
