@@ -35,11 +35,10 @@ class Expenses extends Component {
         this.handleDateChange = this.handleDateChange.bind(this);
     }
 
-    // Method to handle the submission of the form
     async handleSubmit(event) {
-        event.preventDefault(); // Preventing the default form submission behavior
-        const { item } = this.state; // Extracting the current item from the state
-
+        event.preventDefault();
+        const { item } = this.state;
+    
         // Making a POST request to save the new expense item
         await fetch(`/api/expenses`, {
             method: 'POST',
@@ -47,13 +46,17 @@ class Expenses extends Component {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(item), // Converting the item to a JSON string
+            body: JSON.stringify(item),
         });
-
-        // Redirecting to the expenses list page after saving the expense
-        this.props.history.push("/expenses");
+    
+        // Check if history is available and then navigate
+        if (this.props.history) {
+            this.props.history.push("/expenses");
+        } else {
+            console.error("Navigation error: history is undefined");
+        }
     }
-
+    
     // Method to handle changes in the input fields
     handleChange(event) {
         const target = event.target; // Getting the target input field
